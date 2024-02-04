@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Login Page</title>
+<style>/* General Page Styles */
+    
+    body {
+        font-family: Trebuchet MS, Trebuchet MS;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    /* Login Styles */
+    .title {
+        position: absolute;
+        left: 350px;
+        height: 750px;
+        color: white;
+        font-size: 120pt;
+        font-family: Trebuchet MS, Trebuchet MS;
+    }
+    
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+        background-color: rgba(0, 0, 0, 0.1); 
+        padding: 10px; 
+        border:0px;
+    }
+    .login-container {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            height: 50%; 
+            padding: 20px; 
+            margin-top: 75px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px; 
+        }
+    
+    
+    
+    
+    .login-container button{
+        font-family: 'Trebuchet MS', sans-serif;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, .3);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .login-container button:hover{
+        background-color: rgb(30, 36, 148);
+    }
+    
+    /* Journal Styles */
+    .journal-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,1);
+          text-align: center;
+          color: white;
+    }
+    
+    .journal-container h1 {
+        color: white;
+        text-align: center;
+    }
+    
+    .journal-entry-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+          margin-bottom: 7px;
+    }
+    
+    .journal-entry-form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .journal-entry-form input[type="text"],
+    .journal-entry-form input[type="date"],
+    .journal-entry-form textarea {
+        padding: 8px;
+        border: 0px;
+          background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .journal-entry-form button {
+          font-family: 'Trebuchet MS', sans-serif;
+        padding: 10px 20px;
+        background-color: rgba(255, 255, 255, .8);
+        color: #999;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    .journal-entry-form button:hover {
+        background-color: rgb(30, 36, 148);
+    }
+    .journal-container button {
+          font-family: 'Trebuchet MS', sans-serif;
+          padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+          width: 300px;
+          background-color: rgba(255, 255, 255, 0.15);
+    }
+    .journal-container button:hover {
+        background-color: rgb(30, 36, 148);
+    }
+    
+    /* Analysis Styles */
+    .analysis-container {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        color: white;
+    }
+    
+    .analysis-container img {
+        max-width: 600px;
+        height: auto;
+        border-radius: 8px;
+    }
+    
+    .analysis-container h3{
+        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .scrollable-text {
+        height: 150px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.1);
+        overflow-y: scroll;
+        text-align: left;
+        padding: 5px;
+    }
+    </style>
+</head>
+<body>
+    <h1 class="title">DreamLink</h1>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="width: 150%; height: 100vh; position: absolute; left: 0; z-index: -1;">
+        <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#050E51" />
+            <stop offset="100%" stop-color="#5C057E" />
+        </linearGradient>
+        <path d="M0,0 V60 Q300,120 600,60 T1200,60 V0 Z" fill="url(#wave-gradient)"></path>
+        <path d="M0,0 V60 Q300,120 600,60 T1200,60 V0 Z" fill="none" stroke="#" stroke-width="1" filter="url(#shadow)"></path>
+    </svg>
+    <defs>
+        <filter id="shadow" height="130%">
+            <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="black"/>
+        </filter>
+    </defs>
+
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-8 text-center">
+                <img src="../static/assets/floating_brain.svg" alt="Floating Brain" class="float-left" style="width: 450px; height: auto;">
+            </div>
+            <div class="col-md-4">
+                <div class="login-container text-center">
+                    <form id="loginForm" method="post" action="{{ url_for('landing_page') }}">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Log in</button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>document.getElementById('loginForm').addEventListener('submit', function (event) {
+        document.getElementById('nextPageInput').value = "/journal/" + document.getElementById('username').value;});
+</script>
+
+</body>
+</html>

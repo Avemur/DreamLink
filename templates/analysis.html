@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Analysis</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+<style>
+    /* General Page Styles */
+    
+body {
+    font-family: Trebuchet MS, Trebuchet MS;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+/* Login Styles */
+.title {
+    position: absolute;
+    left: 350px;
+    height: 750px;
+    color: white;
+    font-size: 120pt;
+    font-family: Trebuchet MS, Trebuchet MS;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    background-color: rgba(0, 0, 0, 0.1); 
+    padding: 10px; 
+    border:0px;
+}
+.login-container {
+        position: relative;
+        z-index: 2;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        display: flex; 
+        flex-direction: column; 
+        justify-content: center; 
+        height: 50%; 
+        padding: 20px; 
+        margin-top: 75px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px; 
+    }
+
+
+
+
+.login-container button{
+    font-family: 'Trebuchet MS', sans-serif;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, .3);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.login-container button:hover{
+    background-color: rgb(30, 36, 148);
+}
+
+/* Journal Styles */
+.journal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,1);
+  	text-align: center;
+  	color: white;
+}
+
+.journal-container h1 {
+    color: white;
+    text-align: center;
+}
+
+.journal-entry-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  	margin-bottom: 7px;
+}
+
+.journal-entry-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.journal-entry-form input[type="text"],
+.journal-entry-form input[type="date"],
+.journal-entry-form textarea {
+    padding: 8px;
+    border: 0px;
+  	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.journal-entry-form button {
+  	font-family: 'Trebuchet MS', sans-serif;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, .8);
+    color: #999;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.journal-entry-form button:hover {
+    background-color: rgb(30, 36, 148);
+}
+.journal-container button {
+  	font-family: 'Trebuchet MS', sans-serif;
+  	padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  	width: 300px;
+  	background-color: rgba(255, 255, 255, 0.15);
+}
+.journal-container button:hover {
+	background-color: rgb(30, 36, 148);
+}
+
+/* Analysis Styles */
+.analysis-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+}
+
+.analysis-container img {
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.analysis-container h3{
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.scrollable-text {
+    height: 150px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    text-align: left;
+    padding: 5px;
+}
+
+</style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" style="width: 150%; height: 100vh; position: absolute; left: 0; z-index: -1;">
+        <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#050E51" />
+            <stop offset="100%" stop-color="#5C057E" />
+        </linearGradient>
+        <path d="M0,0 V60 Q300,120 600,60 T1200,60 V0 Z" fill="url(#wave-gradient)"></path>
+        <path d="M0,0 V60 Q300,120 600,60 T1200,60 V0 Z" fill="none" stroke="#" stroke-width="5" filter="url(#shadow)"></path>
+    </svg>
+    
+    <div class="analysis-container">
+        <h2 style="color:white">Your Dream Explained</h2>
+        <div class="dream-explanation">
+            <div id="archetypeImageContainer" class="image-container">
+                {% if archetype == 'Visionary' %}
+                    <img src="../static/assets/lightbulbPic.webp" alt="Visionary-img">
+                {% elif archetype == 'Stoic' %}
+                    <img src="../static/assets/mountainPic.png" alt="Stoic-img">
+                {% elif archetype == 'Trailblazer' %}
+                    <img src="../static/assets/firePic.png" alt="Trailblazer-img">
+                {% elif archetype == 'Peacemaker' %}
+                    <img src="../static/assets/sunrisePic.png" alt="Peacemaker-img">
+                {% elif archetype == 'Empathetic' %}
+                    <img src="../static/assets/handsPic.png" alt="empathy-img">
+                {% elif archetype == 'Guardian' %}
+                    <img src="../static/assets/diamondPic.png" alt="Guardian-img">
+                {% else %}
+                    <p>No image available for the specified archetype.</p>
+                {% endif %}
+            </div>
+            <div id="archetypeTitleContainer" class="title-container">
+                <p id="archetypeTitle" class="archetype-title"><h1>{{ archetype }}</h1></p>
+            </div>
+            <div id="archetypeTextContainer" class="scrollable-text">
+                <p id="archetypeText" class="archetype-description">
+                    {% if archetype == 'Visionary' %}
+                        <h3>Visionaries are dreamers who see beyond the horizon, their minds always align with possibilities and what could be. They are characterized by their boundless imagination, innovation, and ability to foresee trends and future potentials. Visionaries are not just dreamers; they are also doers who possess the determination to turn their grand visions into reality. They inspire others with their clarity of purpose and their belief in a better future, often leading the way in technological advancements, creative movements, or social change.</h3>
+                    {% elif archetype == 'Stoic' %}
+                        <h3>Stoic dreamers approach their aspirations with calm resilience and pragmatic realism. Grounded in the philosophy of accepting what they cannot change and diligently working towards what they can, Stoics find strength in their inner peace and unwavering resolve. They are characterized by their ability to remain unshaken by adversity, viewing challenges as opportunities for growth and learning. Stoic dreamers pursue their goals with patience and perseverance, embodying the virtue of enduring without complaint.</h3>
+                    {% elif archetype == 'Trailblazer' %}
+                        <h3>Trailblazers are the pioneers of the dreaming world, those who venture into uncharted territories with courage and zest. They are characterized by their adventurous spirit, innovation, and a strong desire to create new paths rather than follow existing ones. Trailblazers are not deterred by the unknown; instead, they are motivated by the challenge of breaking new ground. They lead by example, encouraging others to step out of their comfort zones and explore new possibilities.</h3>
+                    {% elif archetype == 'Peacemaker' %}
+                        <h3>Peacemaker dreamers are the harmonizers of the world, driven by a vision of unity and tranquility. They possess an innate ability to understand different perspectives and bring people together. Peacemakers are characterized by their empathy, diplomacy, and conflict-resolution skills. Their dreams often involve creating environments where understanding and cooperation flourish. They work tirelessly towards reconciliation and advocate for peaceful solutions, believing in the power of kindness and mutual respect.</h3>
+                    {% elif archetype == 'Empathetic' %}
+                        <h3>Empathetic dreamers are deeply connected to the emotional currents around them, often dreaming of a world where empathy and understanding prevail. They have a profound ability to feel with others, making them sensitive to the needs and pains of those around them. Empathetic dreamers are characterized by their compassion, intuition, and a strong desire to alleviate suffering. Their dreams often involve healing, nurturing, and creating supportive communities where individuals are valued and understood.</h3>
+                    {% elif archetype == 'Guardian' %}
+                        <h3>Guardian dreamers are the protectors, those who dream of safeguarding what is precious, whether it be people, principles, or the planet. They are characterized by their loyalty, responsibility, and a strong sense of duty. Guardians stand firm in the face of threats, ready to defend and preserve with unwavering commitment. Their dreams are rooted in stability, safety, and the continuation of legacies. They inspire trust and provide a sense of security to those around them, embodying the role of a steadfast protector.</h3>
+                {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
